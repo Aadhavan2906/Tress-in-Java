@@ -1,0 +1,96 @@
+import java.util.*;
+class Node
+  {
+    int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+      this.data=data;
+      this.right=right;
+      this.left=left;
+    }
+  }
+class BST
+  {
+    Node root;
+    BST()
+    {
+      this.root=null;
+    }
+    void insert(int data)
+    {
+      Node newnode=new Node(data);
+      if(root==null)
+        root=newnode;
+      else
+      {
+        Node temp=root;
+        while(true)
+          {
+            if(temp.data>newnode.data)
+            {
+              if(temp.left==null)
+              {
+                temp.left=newnode;
+                break;
+              }
+              else
+              {
+                temp=temp.left;
+              }
+            }
+            else
+            {
+              if(temp.data<newnode.data)
+              {
+                if(temp.right==null)
+                {
+                  temp.right=newnode;
+                  break;
+                }
+                else
+                {
+                  temp=temp.right;
+                }
+              }
+            }
+          }
+      }
+    }
+    void display()
+    {
+      displayrec(root);
+    }
+    int max;
+    void displayrec(Node root)
+    {
+      if(root==null)
+        return;
+      else
+      {
+        
+        displayrec(root.left);
+        max = root.data;
+      displayrec(root.right);
+      }
+    }   
+  }
+class Main
+  {
+    public static void main(String args[])
+    {
+      Scanner d=new Scanner(System.in);
+      BST b=new BST();
+      while(true)
+        {
+          int n=d.nextInt();
+          if(n>0)
+            b.insert(n);
+          else
+            break;
+        }
+      b.display();
+      System.out.println("Maximum element is "+b.max);
+    }
+  }
